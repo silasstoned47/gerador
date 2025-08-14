@@ -50,6 +50,8 @@ export default defineNuxtConfig({
       '/',
       '/desenvolvedores',
       '/termos',
+      '/contato',
+      '/politica-privacidade',
       '/todas-ferramentas',
       '/categorias/contatos',
       '/categorias/documentos-pessoais',
@@ -83,7 +85,8 @@ export default defineNuxtConfig({
         '/validadores/cpf',
         '/validadores/celular',
         '/validadores/cnpj',
-        '/contato'
+        '/contato',
+        '/politica-privacidade'
       ]
     }
   },
