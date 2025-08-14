@@ -82,7 +82,8 @@ export default defineNuxtConfig({
         '/validadores',
         '/validadores/cpf',
         '/validadores/celular',
-        '/validadores/cnpj'
+        '/validadores/cnpj',
+        '/contato'
       ]
     }
   },
