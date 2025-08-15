@@ -1,8 +1,7 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
-   
+  <div class="pt-4 pb-16">
     <!-- Features Section -->
-    <section class="py-16 bg-white">
+    <section class="py-12 md:py-16 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-full mb-4">DOCUMENTOS PESSOAIS</span>
@@ -69,7 +68,7 @@
     </section>
 
     <!-- Categories Section -->   
-    <section class="py-16 bg-gradient-to-b from-white to-gray-50">
+    <section class="py-12 md:py-16 bg-gradient-to-b from-white to-gray-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <span class="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-4 shadow-md">CATEGORIAS</span>
