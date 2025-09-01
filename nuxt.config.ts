@@ -83,13 +83,16 @@ export default defineNuxtConfig({
         '/gerador',
         '/gerador/cpf',
         '/gerador/celular',
+        '/gerador/telefone',
         '/gerador/cnpj',
         '/validadores',
         '/validadores/cpf',
         '/validadores/celular',
         '/validadores/cnpj',
         '/contato',
-        '/politica-privacidade'
+        '/politica-privacidade',
+        '/imprimir/cartela-bingo'
+
       ]
     }
   },
