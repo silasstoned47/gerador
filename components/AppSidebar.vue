@@ -2,7 +2,7 @@
   <div class="sidebar" :class="{ 'sidebar--open': isOpen }">
     <div class="sidebar__header">
       <h2 class="sidebar__title">Gerador II</h2>
-      <button class="sidebar__close" @click="toggleSidebar">
+      <button class="sidebar__close" @click="closeSidebar">
         <span class="sr-only">Fechar menu</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -12,6 +12,17 @@
     </div>
     
     <nav class="sidebar__nav">
+      <div class="sidebar__section">
+        <h3 class="sidebar__section-title">Imprimir</h3>
+        <ul class="sidebar__menu">
+          <li class="sidebar__menu-item">
+            <NuxtLink to="/imprimir/cartela-bingo" class="sidebar__link" @click.native="closeSidebar">
+              Cartelas de Bingo
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+
       <div class="sidebar__section">
         <h3 class="sidebar__section-title">Documentos Pessoais</h3>
         <ul class="sidebar__menu">
@@ -93,161 +104,56 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'AppSidebar',
-  props: {
-    isOpen: {
-      type: Boolean,
-      default: false
-    }
-  },
-  methods: {
-    toggleSidebar() {
-      this.$emit('toggle');
-    },
-    closeSidebar() {
-      this.$emit('close');
-    }
+<script setup>
+// Define props
+const props = defineProps({
+  isOpen: {
+    type: Boolean,
+    default: false
   }
-}
+});
+
+// Define events
+const emit = defineEmits(['close']);
+
+// Close sidebar and emit event
+const closeSidebar = () => {
+  emit('close');
+};
 </script>
 
 <style scoped>
 /* Base sidebar styles */
 .sidebar {
-  --sidebar-width: 280px;
-  --sidebar-bg: #ffffff;
-  --sidebar-text: #1f2937;
-  --sidebar-hover-bg: #f3f4f6;
-  --sidebar-active-bg: #e0f2fe;
-  --sidebar-active-text: #0369a1;
-  --sidebar-border: #e5e7eb;
-  --sidebar-section-text: #6b7280;
-  --sidebar-disabled-text: #9ca3af;
-  --sidebar-badge-bg: #e5e7eb;
-  --sidebar-badge-text: #4b5563;
-  --sidebar-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  --sidebar-transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --sidebar-z-index: 40;
-  
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: var(--sidebar-width);
-  background: var(--sidebar-bg);
-  box-shadow: var(--sidebar-shadow);
-  z-index: var(--sidebar-z-index);
-  transition: var(--sidebar-transition);
-  transform: translateX(-100%);
-  overflow-y: auto;
-  padding: 1.25rem 0;
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e1 #f1f5f9;
+  @apply fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-40 overflow-y-auto;
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .sidebar {
-    --sidebar-bg: #1f2937;
-    --sidebar-text: #f9fafb;
-    --sidebar-hover-bg: #374151;
-    --sidebar-active-bg: #1e40af;
-    --sidebar-active-text: #bfdbfe;
-    --sidebar-border: #4b5563;
-    --sidebar-section-text: #9ca3af;
-    --sidebar-disabled-text: #6b7280;
-    --sidebar-badge-bg: #374151;
-    --sidebar-badge-text: #e5e7eb;
-    --sidebar-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .sidebar::-webkit-scrollbar-thumb {
-    background-color: #4b5563;
-  }
-  
-  .sidebar::-webkit-scrollbar-track {
-    background-color: #1f2937;
-  }
-}
-
-/* Scrollbar styling for WebKit browsers */
-.sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background-color: #cbd5e1;
-  border-radius: 3px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-  background-color: #f1f5f9;
-}
-
-/* Open state */
 .sidebar--open {
-  transform: translateX(0);
+  @apply translate-x-0;
 }
 
-/* Header section */
 .sidebar__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1.25rem 1.25rem;
-  border-bottom: 1px solid var(--sidebar-border);
-  margin-bottom: 0.75rem;
+  @apply flex items-center justify-between px-6 py-4 border-b border-gray-100;
 }
 
 .sidebar__title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--sidebar-text);
-  margin: 0;
-  line-height: 1.5;
+  @apply text-xl font-bold text-gray-800;
 }
 
-/* Close button */
 .sidebar__close {
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--sidebar-text);
-  cursor: pointer;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.375rem;
-  transition: all 0.15s ease-in-out;
-  opacity: 0.7;
+  @apply p-1 rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
 }
 
-.sidebar__close:hover {
-  background-color: var(--sidebar-hover-bg);
-  opacity: 1;
+.sidebar__nav {
+  @apply px-2 py-4;
 }
 
-.sidebar__close:focus {
-  outline: 2px solid var(--sidebar-active-bg);
-  outline-offset: 2px;
-}
-
-/* Section styling */
 .sidebar__section {
-  margin-bottom: 1.5rem;
-  padding: 0 0.75rem;
-}
-
-.sidebar__section:last-child {
-  margin-bottom: 0;
+  @apply mb-6;
 }
 
 .sidebar__section-title {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  @apply px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2;
   color: var(--sidebar-section-text);
   margin: 0 0 0.5rem 0.75rem;
   font-weight: 600;

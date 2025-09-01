@@ -58,8 +58,10 @@ export default defineNuxtConfig({
       '/categorias/documentos',
       '/categorias/veiculos',
       '/gerador/celular',
+      '/gerador/telefone',
       '/gerador/cnpj',
       '/gerador/cpf',
+      '/imprimir/cartela-bingo',
       '/validadores/celular',
       '/validadores/cnpj',
       '/validadores/cpf'

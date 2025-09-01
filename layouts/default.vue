@@ -1,39 +1,49 @@
 <template>
-  <div class="min-h-screen bg-gray-50 flex flex-col">
+  <div class="min-h-screen flex flex-col">
     <CookieConsent />
     
-    <div class="flex flex-1 relative">
+    <!-- Header -->
+    
+    <div class="flex flex-1 overflow-hidden">
       <!-- Sidebar -->
       <AppSidebar 
         :is-open="isSidebarOpen" 
         @close="closeSidebar"
-        class="z-50"
+        class="fixed inset-y-0 left-0 z-40 w-64 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0"
+        :class="{'-translate-x-full': !isSidebarOpen}"
       />
       
       <!-- Overlay for mobile -->
       <div 
         v-if="isSidebarOpen" 
-        class="lg:hidden fixed inset-0 bg-black/50 z-40"
         @click="closeSidebar"
-      />
+        class="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+      ></div>
       
       <!-- Main content -->
-      <main class="flex-1 min-w-0 w-full lg:pl-[280px] transition-all duration-300">
-        <div class="max-w-full overflow-x-hidden">
-          <NuxtPage />
+      <main class="flex-1 overflow-auto focus:outline-none lg:ml-64">
+        <div class="min-h-[calc(100vh-4rem)] bg-gradient-to-b from-gray-50 to-gray-100 py-8 px-4 sm:px-6 lg:px-8">
+          <div class="max-w-7xl mx-auto">
+            <slot />
+          </div>
         </div>
+        
+        <AppFooter class="bg-white border-t border-gray-200" />
       </main>
     </div>
     
-    <AppFooter class="lg:ml-[280px]" />
     <DisclaimerModal v-if="showDisclaimer" @close="showDisclaimer = false" />
   </div>
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, watch, provide } from 'vue';
 import { useRoute } from 'vue-router';
 import CookieConsent from '~/components/CookieConsent.vue';
+import AppHeader from '~/components/AppHeader.vue';
+import AppFooter from '~/components/AppFooter.vue';
+import AppSidebar from '~/components/AppSidebar.vue';
+import DisclaimerModal from '~/components/DisclaimerModal.vue';
 
 const route = useRoute();
 const isSidebarOpen = ref(false);
@@ -49,8 +59,10 @@ const closeSidebar = () => {
   }
 };
 
-// Close sidebar when route changes (mobile)
-watch(() => route.path, closeSidebar);
+// Close sidebar when route changes
+watch(() => route.path, () => {
+  closeSidebar();
+});
 
 // Close sidebar when pressing escape key
 const handleEscape = (e) => {
@@ -72,14 +84,25 @@ const handleResize = () => {
 onMounted(() => {
   window.addEventListener('keydown', handleEscape);
   window.addEventListener('resize', handleResize);
+  
+  // Initialize sidebar state based on screen size
+  handleResize();
+  
+  // Show disclaimer on first visit
+  const disclaimerShown = localStorage.getItem('disclaimerShown');
+  if (!disclaimerShown) {
+    showDisclaimer.value = true;
+    localStorage.setItem('disclaimerShown', 'true');
+  }
 });
 
-onBeforeUnmount(() => {
+// Clean up event listeners
+onUnmounted(() => {
   window.removeEventListener('keydown', handleEscape);
   window.removeEventListener('resize', handleResize);
 });
 
-// Global disclaimer state
+// Provide showDisclaimer function to child components
 provide('showDisclaimer', () => {
   showDisclaimer.value = true;
 });

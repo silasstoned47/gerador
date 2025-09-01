@@ -79,16 +79,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch, onUnmounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, onMounted } from 'vue';
 
-const route = useRoute();
+const emit = defineEmits(['toggle-sidebar']);
 const isDarkMode = ref(false);
-const isSidebarOpen = ref(false);
 
 const toggleSidebar = () => {
-  isSidebarOpen.value = !isSidebarOpen.value;
-  // Emit event to parent if needed
   emit('toggle-sidebar');
 };
 
@@ -112,20 +108,5 @@ onMounted(() => {
     document.documentElement.classList.remove('dark');
     isDarkMode.value = false;
   }
-  
-  // Close sidebar on mobile when route changes
-  const unwatch = watch(() => route.path, () => {
-    if (window.innerWidth < 1024) {
-      isSidebarOpen.value = false;
-    }
-  });
-  
-  // Cleanup
-  onUnmounted(() => {
-    unwatch();
-  });
 });
-
-// Emit events to parent
-const emit = defineEmits(['toggle-sidebar']);
 </script>
