@@ -48,10 +48,12 @@ export default defineNuxtConfig({
     exclude: ['/dev', '/gerador', '/validadores'],
     urls: [
       '/',
-      '/desenvolvedores',
-      '/termos',
+      '/sobre',
       '/contato',
       '/politica-privacidade',
+      '/categorias/contatos',
+      '/categorias/documentos-pessoais',
+      '/categorias/veiculos',
       '/gerador/celular',
       '/gerador/telefone',
       '/gerador/cnpj',
@@ -60,8 +62,7 @@ export default defineNuxtConfig({
       '/imprimir/cartela-bingo',
       '/validadores/celular',
       '/validadores/cnpj',
-      '/validadores/cpf',
-      '/imprimir/cartela-bingo'
+      '/validadores/cpf'
     ],
     defaults: {
       changefreq: 'weekly',
