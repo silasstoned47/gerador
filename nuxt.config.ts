@@ -64,7 +64,8 @@ export default defineNuxtConfig({
       '/imprimir/cartela-bingo',
       '/validadores/celular',
       '/validadores/cnpj',
-      '/validadores/cpf'
+      '/validadores/cpf',
+      '/imprimir/cartela-bingo'
     ],
     defaults: {
       changefreq: 'weekly',
