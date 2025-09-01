@@ -31,8 +31,6 @@
         <AppFooter class="bg-white border-t border-gray-200" />
       </main>
     </div>
-    
-    <DisclaimerModal v-if="showDisclaimer" @close="showDisclaimer = false" />
   </div>
 </template>
 
@@ -43,11 +41,9 @@ import CookieConsent from '~/components/CookieConsent.vue';
 import AppHeader from '~/components/AppHeader.vue';
 import AppFooter from '~/components/AppFooter.vue';
 import AppSidebar from '~/components/AppSidebar.vue';
-import DisclaimerModal from '~/components/DisclaimerModal.vue';
 
 const route = useRoute();
 const isSidebarOpen = ref(false);
-const showDisclaimer = ref(false);
 
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value;
