@@ -81,6 +81,13 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
+const props = defineProps({
+  isSidebarOpen: {
+    type: Boolean,
+    default: false
+  }
+});
+
 const emit = defineEmits(['toggle-sidebar']);
 const isDarkMode = ref(false);
 

@@ -77,6 +77,10 @@ export default defineNuxtConfig({
 
   // SSR Configuration for SEO
   ssr: true,
+  experimental: {
+    payloadExtraction: true,
+    renderJsonPayloads: true
+  },
   nitro: {
     prerender: {
       routes: [
@@ -94,8 +98,11 @@ export default defineNuxtConfig({
         '/contato',
         '/politica-privacidade',
         '/imprimir/cartela-bingo'
-
-      ]
+      ],
+      crawlLinks: true
+    },
+    routeRules: {
+      '/**': { prerender: true }
     }
   },
 

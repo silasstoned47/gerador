@@ -3,8 +3,8 @@
     <Breadcrumbs :breadcrumbs="breadcrumbs" />
     
     <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-900 mb-4">Gerador de Telefone Fixo Online</h1>
-      <p class="text-gray-600 text-lg">
+      <h1 class="text-2xl font-bold text-gray-900 mb-4">Gerador de Telefone Fixo Online</h1>
+      <p class="text-gray-600 text-base">
         Gere números de telefone fixo brasileiros válidos para testes. Todos os números seguem o padrão nacional com DDDs corretos.
       </p>
     </div>

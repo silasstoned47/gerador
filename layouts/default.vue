@@ -3,7 +3,10 @@
     <CookieConsent />
     
     <!-- Header -->
-    <AppHeader @toggle-sidebar="toggleSidebar" />
+    <AppHeader 
+      :is-sidebar-open="isSidebarOpen" 
+      @toggle-sidebar="toggleSidebar" 
+    />
     
     <div class="flex flex-1 overflow-hidden">
       <!-- Sidebar -->
