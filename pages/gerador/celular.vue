@@ -189,16 +189,13 @@ const options = ref({
 
 const generatedNumbers = ref([])
 const regions = CelularUtils.getRegions()
-const showDisclaimer = inject('showDisclaimer')
 
 const generateCelular = () => {
-  showDisclaimer()
   const number = CelularUtils.generate(options.value)
   generatedNumbers.value = [number]
 }
 
 const generateMultiple = () => {
-  showDisclaimer()
   const numbers = []
   for (let i = 0; i < 10; i++) {
     numbers.push(CelularUtils.generate(options.value))

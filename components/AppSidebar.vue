@@ -24,16 +24,7 @@
           <span>Início</span>
         </NuxtLink>
       </div>
-      <div class="sidebar__section">
-        <h3 class="sidebar__section-title">Imprimir</h3>
-        <ul class="sidebar__menu">
-          <li class="sidebar__menu-item">
-            <NuxtLink to="/imprimir/cartela-bingo" class="sidebar__link" @click.native="closeSidebar">
-              Cartelas de Bingo
-            </NuxtLink>
-          </li>
-        </ul>
-      </div>
+     
 
       <div class="sidebar__section">
         <h3 class="sidebar__section-title">Documentos Pessoais</h3>
@@ -57,6 +48,16 @@
         </ul>
       </div>
 
+ <div class="sidebar__section">
+        <h3 class="sidebar__section-title">Imprimir</h3>
+        <ul class="sidebar__menu">
+          <li class="sidebar__menu-item">
+            <NuxtLink to="/imprimir/cartela-bingo" class="sidebar__link" @click.native="closeSidebar">
+              Cartelas de Bingo
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
       <div class="sidebar__section">
         <h3 class="sidebar__section-title">Contatos</h3>
         <ul class="sidebar__menu">
@@ -64,6 +65,11 @@
             <NuxtLink to="/gerador/celular" class="sidebar__link" @click.native="closeSidebar">
               Gerador de Celular
             </NuxtLink>
+          </li>
+          <li class="sidebar__menu-item">
+            <NuxtLink to="/gerador/telefone" class="sidebar__link" @click.native="closeSidebar">
+              Gerador de Telefone
+            </NuxtLink> 
           </li>
           <li class="sidebar__menu-item">
             <span class="sidebar__link sidebar__link--disabled">

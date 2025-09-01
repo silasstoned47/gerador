@@ -88,12 +88,7 @@ onMounted(() => {
   // Initialize sidebar state based on screen size
   handleResize();
   
-  // Show disclaimer on first visit
-  const disclaimerShown = localStorage.getItem('disclaimerShown');
-  if (!disclaimerShown) {
-    showDisclaimer.value = true;
-    localStorage.setItem('disclaimerShown', 'true');
-  }
+  
 });
 
 // Clean up event listeners
@@ -102,8 +97,4 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize);
 });
 
-// Provide showDisclaimer function to child components
-provide('showDisclaimer', () => {
-  showDisclaimer.value = true;
-});
 </script>

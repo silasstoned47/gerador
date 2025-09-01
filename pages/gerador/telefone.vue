@@ -175,11 +175,11 @@
 </template>
 
 <script setup>
-import { FixoUtils } from '~/utils/fixo.js'
+import { TelefoneUtils as FixoUtils } from '~/utils/telefone.js'
 
 const breadcrumbs = [
   { name: 'geradores', path: '/gerador' },
-  { name: 'telefone-fixo', path: '/gerador/telefone-fixo' }
+  { name: 'telefone', path: '/gerador/telefone' }
 ]
 
 const options = ref({
@@ -189,16 +189,13 @@ const options = ref({
 
 const generatedNumbers = ref([])
 const regions = FixoUtils.getRegions()
-const showDisclaimer = inject('showDisclaimer')
 
 const generateFixo = () => {
-  showDisclaimer()
   const number = FixoUtils.generate(options.value)
   generatedNumbers.value = [number]
 }
 
 const generateMultiple = () => {
-  showDisclaimer()
   const numbers = []
   for (let i = 0; i < 10; i++) {
     numbers.push(FixoUtils.generate(options.value))
@@ -230,7 +227,7 @@ useSchemaOrg([
     '@type': 'SoftwareApplication',
     name: 'Gerador de Telefone Fixo Online',
     description: 'Ferramenta online para gerar números de telefone fixo brasileiros para testes',
-    url: 'https://geradorii.com/gerador/telefone-fixo',
+    url: 'https://geradorii.com/gerador/telefone',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Web Browser'
   }

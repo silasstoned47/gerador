@@ -1,5 +1,5 @@
 // Gerador e validador de números de telefone fixo brasileiros
-export const FixoUtils = {
+export const TelefoneUtils = {
     // DDD por região
     ddds: {
       'São Paulo (Capital)': ['11'],
