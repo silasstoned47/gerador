@@ -72,6 +72,11 @@
             </NuxtLink> 
           </li>
           <li class="sidebar__menu-item">
+            <NuxtLink to="/gerador/qr-code" class="sidebar__link" @click.native="closeSidebar">
+              Gerador de QR Code
+            </NuxtLink>
+          </li>
+          <li class="sidebar__menu-item">
             <span class="sidebar__link sidebar__link--disabled">
               Gerador de E-mail
               <span class="badge">Em breve</span>
