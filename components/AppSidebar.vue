@@ -1,7 +1,6 @@
 <template>
   <div class="sidebar" :class="{ 'sidebar--open': isOpen }">
     <div class="sidebar__header">
-      <h2 class="sidebar__title">Gerador II</h2>
       <button class="sidebar__close" @click="closeSidebar">
         <span class="sr-only">Fechar menu</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -12,6 +11,19 @@
     </div>
     
     <nav class="sidebar__nav">
+      <!-- Home Link -->
+      <div class="px-4 py-3 border-b border-gray-100">
+        <NuxtLink 
+          to="/" 
+          class="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200 group"
+          @click.native="closeSidebar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500 group-hover:text-gray-700 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+          </svg>
+          <span>Início</span>
+        </NuxtLink>
+      </div>
       <div class="sidebar__section">
         <h3 class="sidebar__section-title">Imprimir</h3>
         <ul class="sidebar__menu">

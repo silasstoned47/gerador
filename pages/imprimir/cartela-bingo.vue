@@ -324,7 +324,7 @@ useHead({
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-8 px-4 sm:px-6 lg:px-8">
+  <div class="min-h-screen bg-gradient-to-b to-gray-100 py-8 px-4 sm:px-6 lg:px-8">
     <client-only>
       <div class="max-w-7xl mx-auto">
         <!-- Header -->

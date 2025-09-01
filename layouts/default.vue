@@ -3,6 +3,7 @@
     <CookieConsent />
     
     <!-- Header -->
+    <AppHeader @toggle-sidebar="toggleSidebar" />
     
     <div class="flex flex-1 overflow-hidden">
       <!-- Sidebar -->
@@ -22,7 +23,7 @@
       
       <!-- Main content -->
       <main class="flex-1 overflow-auto focus:outline-none lg:ml-64">
-        <div class="min-h-[calc(100vh-4rem)] bg-gradient-to-b from-gray-50 to-gray-100 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="min-h-[calc(100vh-4rem)] bg-gradient-to-b to-gray-100 py-8 px-4 sm:px-6 lg:px-8">
           <div class="max-w-7xl mx-auto">
             <slot />
           </div>
@@ -47,11 +48,13 @@ const isSidebarOpen = ref(false);
 
 const toggleSidebar = () => {
   isSidebarOpen.value = !isSidebarOpen.value;
+  console.log('Sidebar toggled. New state:', isSidebarOpen.value);
 };
 
 const closeSidebar = () => {
   if (window.innerWidth < 1024) {
     isSidebarOpen.value = false;
+    console.log('Sidebar closed');
   }
 };
 
@@ -74,6 +77,7 @@ const handleResize = () => {
   } else {
     isSidebarOpen.value = false;
   }
+  console.log('Window resized. Sidebar state:', isSidebarOpen.value);
 };
 
 // Set up event listeners

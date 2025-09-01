@@ -35,7 +35,7 @@ const generateCard = () => {
   }
   
   // Insert free space in the middle
-  columns.N.splice(2, 0, 'FREE')
+  columns.N.splice(2, 0, 'BINGO')
   
   return columns
 }
