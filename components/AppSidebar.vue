@@ -148,11 +148,24 @@ const closeSidebar = () => {
 <style scoped>
 /* Base sidebar styles */
 .sidebar {
-  @apply fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-40 overflow-y-auto;
+  @apply fixed top-16 left-0 w-64 h-[calc(100vh-4rem)] bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-40 overflow-y-auto;
 }
 
 .sidebar--open {
   @apply translate-x-0;
+}
+
+/* Desktop styles */
+@screen lg {
+  .sidebar {
+    @apply top-16 h-[calc(100vh-4rem)] z-30;
+    transform: none;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar--open {
+    @apply translate-x-0;
+  }
 }
 
 .sidebar__header {
