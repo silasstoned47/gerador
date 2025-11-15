@@ -1,8 +1,8 @@
 <template>
   <header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex items-center">
+    <div class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+      <div class="flex justify-between h-14 sm:h-16">
+        <div class="flex items-center space-x-2">
           <!-- Mobile menu button -->
           <button 
             @click="toggleSidebar" 

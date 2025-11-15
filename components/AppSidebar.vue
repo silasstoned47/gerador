@@ -1,28 +1,12 @@
 <template>
   <div class="sidebar" :class="{ 'sidebar--open': isOpen }">
-    <div class="sidebar__header">
-      <button class="sidebar__close" @click="closeSidebar">
-        <span class="sr-only">Fechar menu</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-    </div>
+    <!-- Cabeçalho removido pois já temos o botão de fechar no AppHeader -->
+    <div class="sidebar__header"></div>
     
     <nav class="sidebar__nav">
       <!-- Home Link -->
       <div class="px-4 py-3 border-b border-gray-100">
-        <NuxtLink 
-          to="/" 
-          class="flex items-center px-4 py-2.5 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200 group"
-          @click.native="closeSidebar"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-gray-500 group-hover:text-gray-700 transition-colors duration-200" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-          </svg>
-          <span>Início</span>
-        </NuxtLink>
+        
       </div>
      
 
@@ -148,7 +132,8 @@ const closeSidebar = () => {
 <style scoped>
 /* Base sidebar styles */
 .sidebar {
-  @apply fixed top-16 left-0 w-64 h-[calc(100vh-4rem)] bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-40 overflow-y-auto;
+  @apply fixed left-0 w-64 h-[calc(100vh-3.5rem)] bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-40 overflow-y-auto;
+  top: 3.5rem; /* 56px - altura do header */
 }
 
 .sidebar--open {
@@ -158,7 +143,8 @@ const closeSidebar = () => {
 /* Desktop styles */
 @screen lg {
   .sidebar {
-    @apply top-16 h-[calc(100vh-4rem)] z-30;
+    @apply h-[calc(100vh-3.5rem)] z-30;
+    top: 3.5rem; /* 56px - altura do header */
     transform: none;
     transition: transform 0.3s ease-in-out;
   }
@@ -169,7 +155,9 @@ const closeSidebar = () => {
 }
 
 .sidebar__header {
-  @apply flex items-center justify-between px-6 py-4 border-b border-gray-100;
+  @apply border-b border-gray-100;
+  height: 0;
+  overflow: hidden;
 }
 
 .sidebar__title {

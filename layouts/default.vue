@@ -8,12 +8,12 @@
       @toggle-sidebar="toggleSidebar" 
     />
     
-    <div class="flex flex-1 overflow-hidden relative pt-16 md:pt-16">
+    <div class="flex flex-1 overflow-hidden relative">
       <!-- Sidebar -->
       <AppSidebar 
         :is-open="isSidebarOpen" 
         @close="closeSidebar"
-        class="fixed lg:sticky top-16 left-0 z-30 w-64 transform transition-transform duration-300 ease-in-out lg:translate-x-0"
+        class="fixed lg:sticky top-14 left-0 z-30 w-64 transform transition-transform duration-300 ease-in-out lg:translate-x-0"
         :class="{'-translate-x-full': !isSidebarOpen}"
       />
       
@@ -25,8 +25,8 @@
       ></div>
       
       <!-- Main content -->
-      <main class="flex-1 overflow-auto focus:outline-none lg:ml-64 w-full">
-        <div class="min-h-[calc(100vh-4rem)] bg-gradient-to-b to-gray-100 py-4 sm:py-6 px-4 sm:px-6 lg:px-8">
+      <main class="flex-1 overflow-auto focus:outline-none lg:ml-64 w-full bg-white pt-4">
+        <div class="min-h-[calc(100vh-4rem)] px-4 sm:px-6 lg:px-8">
           <div class="max-w-7xl mx-auto">
             <slot />
           </div>
