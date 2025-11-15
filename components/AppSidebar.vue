@@ -24,6 +24,11 @@
             </NuxtLink>
           </li>
           <li class="sidebar__menu-item">
+            <NuxtLink to="/gerador/cnpj-alfanumerico" class="sidebar__link" @click.native="closeSidebar">
+              Gerador de CNPJ Alfanumérico
+            </NuxtLink>
+          </li>
+          <li class="sidebar__menu-item">
             <span class="sidebar__link sidebar__link--disabled">
               Gerador de RG
               <span class="badge">Em breve</span>

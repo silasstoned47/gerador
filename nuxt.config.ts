@@ -2,11 +2,16 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
   
+  // Future compatibility options
+  future: {
+    compatibilityVersion: 4,
+    typescriptBundlerResolution: true
+  },
+  
   // SEO Configuration
   app: {
     head: {
       htmlAttrs: {
-        lang: 'pt-BR',
         dir: 'ltr'
       },
       title: 'Geradores e Validadores de Documentos',
@@ -57,6 +62,7 @@ export default defineNuxtConfig({
       '/gerador/celular',
       '/gerador/telefone',
       '/gerador/cnpj',
+      '/gerador/cnpj-alfanumerico',
       '/gerador/cpf',
       '/gerador/qr-code',
       '/imprimir/cartela-bingo',
@@ -86,6 +92,7 @@ export default defineNuxtConfig({
         '/gerador/celular',
         '/gerador/telefone',
         '/gerador/cnpj',
+        '/gerador/cnpj-alfanumerico',
         '/gerador/qr-code',
         '/validadores',
         '/validadores/cpf',
