@@ -3,8 +3,8 @@
     <!-- Content1 -->
     <ins class="adsbygoogle"
          style="display:block"
-         data-ad-client="ca-pub-3743088030638764"
-         data-ad-slot="6441683637"
+         :data-ad-client="adClient"
+         :data-ad-slot="adSlot"
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
   </div>
@@ -12,6 +12,17 @@
 
 <script setup>
 import { onMounted } from 'vue';
+import { useRuntimeConfig } from '#app';
+
+const props = defineProps({
+  adSlot: {
+    type: String,
+    required: true
+  }
+});
+
+const config = useRuntimeConfig();
+const adClient = config.public.adSenseClient;
 
 onMounted(() => {
   try {

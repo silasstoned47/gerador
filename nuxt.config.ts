@@ -1,13 +1,13 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
-  
+
   // Future compatibility options
   future: {
     compatibilityVersion: 4,
     typescriptBundlerResolution: true
   },
-  
+
   // SEO Configuration
   app: {
     head: {
@@ -35,11 +35,18 @@ export default defineNuxtConfig({
       ],
       script: [
         {
-          src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3743088030638764',
+          src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NUXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-3743088030638764'}`,
           async: true,
           crossorigin: 'anonymous'
         }
       ]
+    }
+  },
+
+  // Runtime Config
+  runtimeConfig: {
+    public: {
+      adSenseClient: process.env.NUXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-3743088030638764'
     }
   },
 
