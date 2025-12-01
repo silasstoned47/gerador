@@ -32,6 +32,13 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'canonical', href: 'https://geradorii.com' }
+      ],
+      script: [
+        {
+          src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3743088030638764',
+          async: true,
+          crossorigin: 'anonymous'
+        }
       ]
     }
   },
