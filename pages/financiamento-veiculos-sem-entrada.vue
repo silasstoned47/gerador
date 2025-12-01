@@ -16,7 +16,9 @@
         </p>
       </div>
 
-
+     <!-- AdSense Middle -->
+      <AdSense adSlot="6441683637" />
+      
       <!-- Simulator Card -->
       <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 mb-8">
         <div class="p-6 sm:p-8">
@@ -150,8 +152,7 @@
         </div>
       </div>
 
-      <!-- AdSense Middle -->
-      <AdSense adSlot="6441683637" />
+ 
 
       <!-- SEO Content -->
       <div class="prose prose-blue max-w-none mt-12 bg-white p-6 rounded-xl shadow-sm">
