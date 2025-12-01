@@ -151,7 +151,7 @@
       </div>
 
       <!-- AdSense Middle -->
-      <AdSense adSlot="0987654321" />
+      <AdSense adSlot="6441683637" />
 
       <!-- SEO Content -->
       <div class="prose prose-blue max-w-none mt-12 bg-white p-6 rounded-xl shadow-sm">
@@ -179,7 +179,7 @@
       </div>
 
       <!-- AdSense Bottom -->
-      <AdSense adSlot="1122334455" />
+      <AdSense adSlot="6441683637" />
 
     </div>
   </div>
