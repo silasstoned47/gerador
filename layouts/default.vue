@@ -28,7 +28,7 @@
       <main class="flex-1 overflow-auto focus:outline-none lg:ml-64 w-full bg-white pt-4">
         <div class="min-h-[calc(100vh-4rem)] px-4 sm:px-6 lg:px-8">
           <div class="max-w-7xl mx-auto">
-            <AdSense ad-slot="6441683637" />
+            <AdSense ad-slot="6441683637" :key="route.fullPath" />
             <slot />
           </div>
         </div>
