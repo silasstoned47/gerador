@@ -1,35 +1,59 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-8">
+  <div class="min-h-screen bg-gray-50 py-8 font-sans text-gray-900">
     <Head>
-      <Title>Simulador de Financiamento: Carro Sem Entrada - Análise de Score</Title>
-      <Meta name="description" content="Simule financiamento de veículos sem entrada. Verifique seu Score e descubra se você consegue financiar 100% do seu carro novo." />
+      <Title>Simulador de Financiamento: Carro Sem Entrada - Análise Completa</Title>
+      <Meta name="description" content="Simule financiamento de veículos sem entrada. Análise detalhada de Score, confirmação de dados e aprovação instantânea." />
     </Head>
 
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="text-center mb-8">
-        <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-          Simulador de Financiamento: Carro Sem Entrada
+        <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl tracking-tight">
+          Simulador de Financiamento
         </h1>
-        <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-          Descubra se seu perfil é aprovado para financiar 100% do veículo e simule o valor da parcela agora.
+        <p class="mt-3 max-w-2xl mx-auto text-lg text-gray-500">
+          Análise de crédito profissional para financiamento 100% sem entrada.
         </p>
       </div>
 
-     <!-- AdSense Middle -->
-      <AdSense adSlot="6441683637" />
-      
-      <!-- Simulator Card -->
-      <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 mb-8">
-        <div class="p-6 sm:p-8">
-          <form @submit.prevent="handleSimulation" class="space-y-6">
-            
-            <!-- Vehicle Value Input -->
+      <!-- Progress Steps -->
+      <div v-if="currentStep > 0" class="mb-8">
+        <div class="flex items-center justify-between relative">
+          <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-1 bg-gray-200 -z-10"></div>
+          <div 
+            class="absolute left-0 top-1/2 transform -translate-y-1/2 h-1 bg-blue-600 transition-all duration-500 -z-10"
+            :style="{ width: `${((currentStep - 1) / 3) * 100}%` }"
+          ></div>
+          
+          <div v-for="step in 4" :key="step" class="flex flex-col items-center">
+            <div 
+              class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold border-2 transition-colors duration-300 bg-white"
+              :class="currentStep >= step ? 'border-blue-600 text-blue-600' : 'border-gray-300 text-gray-400'"
+            >
+              {{ step }}
+            </div>
+            <span class="text-xs mt-1 font-medium" :class="currentStep >= step ? 'text-blue-600' : 'text-gray-400'">
+              {{ getStepLabel(step) }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- AdSense Top -->
+      <div class="mb-8">
+        <AdSense adSlot="6441683637" />
+      </div>
+
+      <!-- Main Card -->
+      <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 transition-all duration-500">
+        
+        <!-- Step 1: Initial Data -->
+        <div v-if="currentStep === 1" class="p-8 animate-fade-in">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Dados Iniciais</h2>
+          <form @submit.prevent="fetchData" class="space-y-6">
             <div>
-              <label for="vehicle-value" class="block text-sm font-medium text-gray-700">
-                Valor do Veículo (R$)
-              </label>
-              <div class="mt-1 relative rounded-md shadow-sm">
+              <label for="vehicle-value" class="block text-sm font-medium text-gray-700 mb-1">Valor do Veículo</label>
+              <div class="relative rounded-md shadow-sm">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <span class="text-gray-500 sm:text-sm">R$</span>
                 </div>
@@ -45,143 +69,273 @@
               </div>
             </div>
 
-            <!-- CPF Input -->
             <div>
-              <label for="cpf" class="block text-sm font-medium text-gray-700">
-                Seu CPF (Para análise de Score)
-              </label>
-              <div class="mt-1">
-                <input
-                  type="text"
-                  id="cpf"
-                  v-model="cpf"
-                  @input="maskCPF"
-                  maxlength="14"
-                  class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-lg border-gray-300 rounded-md py-3 px-4"
-                  placeholder="000.000.000-00"
-                  required
-                />
-              </div>
+              <label for="cpf" class="block text-sm font-medium text-gray-700 mb-1">CPF do Solicitante</label>
+              <input
+                type="text"
+                id="cpf"
+                v-model="cpf"
+                @input="maskCPF"
+                maxlength="14"
+                class="focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-lg border-gray-300 rounded-md py-3 px-4"
+                placeholder="000.000.000-00"
+                required
+              />
               <p class="mt-2 text-xs text-gray-500 flex items-center">
                 <svg class="h-4 w-4 mr-1 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
-                Ambiente seguro. Seus dados são usados apenas para a simulação.
+                Ambiente seguro e criptografado.
               </p>
             </div>
 
-            <!-- Action Button -->
             <button
               type="submit"
               :disabled="loading"
-              class="w-full flex justify-center py-4 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
+              class="w-full flex justify-center py-4 px-4 border border-transparent rounded-lg shadow-sm text-lg font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               <span v-if="loading" class="flex items-center">
                 <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Analisando Perfil...
+                Buscando Dados...
               </span>
-              <span v-else>
-                Simular Financiamento Grátis
-              </span>
+              <span v-else>Iniciar Análise Gratuita</span>
             </button>
           </form>
         </div>
 
-        <!-- Results Section -->
-        <div v-if="result" class="bg-gray-50 px-6 py-8 border-t border-gray-100 animate-fade-in">
-          
-          <!-- Personalization -->
-          <div v-if="userData.name" class="mb-6">
-            <h3 class="text-xl font-bold text-gray-800">
-              Olá, {{ formatName(userData.name) }}!
-            </h3>
-            <p class="text-gray-600">Analisamos seu perfil financeiro.</p>
+        <!-- Step 2: Data Confirmation -->
+        <div v-if="currentStep === 2" class="p-8 animate-fade-in">
+          <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 mb-4">
+              <svg class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900">Confirme seus Dados</h2>
+            <p class="text-gray-600 mt-2">Encontramos as seguintes informações associadas ao seu CPF.</p>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Name -->
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+              <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Nome Completo</span>
+              <p class="text-lg font-medium text-gray-900">{{ apiData.name }}</p>
+            </div>
+
+            <!-- Phones Selection -->
+            <div v-if="apiData.phones.length > 0">
+              <label class="block text-sm font-medium text-gray-700 mb-2">Selecione seu telefone principal</label>
+              <div class="space-y-2">
+                <div 
+                  v-for="(phone, index) in apiData.phones" 
+                  :key="index"
+                  @click="selectedData.phone = phone"
+                  class="flex items-center p-3 border rounded-lg cursor-pointer transition-all hover:bg-blue-50"
+                  :class="selectedData.phone === phone ? 'border-blue-500 bg-blue-50 ring-1 ring-blue-500' : 'border-gray-200'"
+                >
+                  <div class="flex-1">
+                    <p class="font-medium text-gray-900">{{ formatPhone(phone.number) }}</p>
+                    <p class="text-xs text-gray-500">
+                      {{ phone.type }} 
+                      <span v-if="phone.isWhatsapp" class="text-green-600 font-bold ml-1">• WhatsApp</span>
+                    </p>
+                  </div>
+                  <div class="ml-3" v-if="selectedData.phone === phone">
+                    <svg class="h-5 w-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Address Selection -->
+            <div v-if="apiData.addresses.length > 0">
+              <label class="block text-sm font-medium text-gray-700 mb-2">Confirme seu endereço atual</label>
+              <div class="space-y-2">
+                <div 
+                  v-for="(addr, index) in apiData.addresses.slice(0, 3)" 
+                  :key="index"
+                  @click="selectedData.address = addr"
+                  class="flex items-center p-3 border rounded-lg cursor-pointer transition-all hover:bg-blue-50"
+                  :class="selectedData.address === addr ? 'border-blue-500 bg-blue-50 ring-1 ring-blue-500' : 'border-gray-200'"
+                >
+                  <div class="flex-1">
+                    <p class="font-medium text-gray-900 text-sm">{{ addr.street }}, {{ addr.number }}</p>
+                    <p class="text-xs text-gray-500">{{ addr.district }} - {{ addr.city }}/{{ addr.state }}</p>
+                  </div>
+                  <div class="ml-3" v-if="selectedData.address === addr">
+                    <svg class="h-5 w-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AdSense Inter-Step 2 -->
+            <div class="my-6">
+              <AdSense adSlot="6441683637" />
+            </div>
+
+            <button
+              @click="confirmData"
+              class="w-full py-4 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-sm transition-colors duration-200"
+            >
+              Confirmar e Analisar Crédito
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Credit Analysis -->
+        <div v-if="currentStep === 3" class="p-8 animate-fade-in">
+          <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-gray-900">Análise de Crédito</h2>
+            <p class="text-gray-600 mt-2">Calculando seu potencial de financiamento...</p>
           </div>
 
           <!-- Score Thermometer -->
-          <div class="mb-8">
-            <div class="flex justify-between items-end mb-2">
-              <span class="text-sm font-medium text-gray-500">Score de Crédito</span>
-              <span :class="scoreColorClass" class="text-lg font-bold">{{ scoreData.value }} / 1000</span>
+          <div class="mb-8 bg-gray-50 p-6 rounded-xl border border-gray-200">
+            <div class="flex justify-between items-end mb-3">
+              <span class="text-sm font-bold text-gray-700 uppercase">Seu Score</span>
+              <div class="text-right">
+                <span class="text-3xl font-black block" :class="scoreColorClass">{{ apiData.score }}</span>
+                <span class="text-xs text-gray-500 font-medium">de 1000 pontos</span>
+              </div>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden relative">
+            <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden relative shadow-inner">
               <div 
-                class="h-full transition-all duration-1000 ease-out rounded-full"
+                class="h-full transition-all duration-1500 ease-out rounded-full relative"
                 :class="scoreBgClass"
-                :style="{ width: `${(scoreData.value / 1000) * 100}%` }"
-              ></div>
+                :style="{ width: `${(apiData.score / 1000) * 100}%` }"
+              >
+                <div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+              </div>
             </div>
-            <p class="mt-2 text-sm text-gray-600">
-              Classificação: <span class="font-semibold">{{ scoreData.range }}</span>
-            </p>
-          </div>
-
-          <!-- Simulation Values -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-              <p class="text-xs text-gray-500 uppercase tracking-wide font-semibold">Entrada Necessária</p>
-              <p class="text-2xl font-bold text-green-600">R$ 0,00</p>
-              <p class="text-xs text-gray-400 mt-1">*Mediante aprovação bancária</p>
-            </div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-              <p class="text-xs text-gray-500 uppercase tracking-wide font-semibold">Parcela Estimada (48x)</p>
-              <p class="text-2xl font-bold text-blue-600">{{ formatCurrencyValue(simulation.installment) }}</p>
-              <p class="text-xs text-gray-400 mt-1">Taxa est. {{ simulation.rate }}% a.m.</p>
+            <div class="mt-3 flex justify-between text-xs font-medium text-gray-500">
+              <span>Baixo Risco</span>
+              <span>Médio Risco</span>
+              <span>Alto Risco</span>
             </div>
           </div>
 
-          <!-- CTA Banks -->
-          <div class="space-y-3">
-            <h4 class="font-medium text-gray-900">Bancos recomendados para seu perfil:</h4>
-            <div v-for="bank in recommendedBanks" :key="bank.name" class="flex items-center justify-between bg-white p-3 rounded-md border border-gray-200">
+          <!-- Metrics Grid -->
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-gray-500 uppercase">Poder de Compra</span>
+                <svg class="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <p class="text-2xl font-bold text-gray-900">{{ metrics.purchasingPower }}/100</p>
+              <p class="text-xs text-gray-500 mt-1">{{ getPurchasingPowerLabel() }}</p>
+            </div>
+            
+            <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-gray-500 uppercase">Renda Estimada</span>
+                <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <p class="text-2xl font-bold text-gray-900">{{ formatCurrencyValue(apiData.income) }}</p>
+              <p class="text-xs text-gray-500 mt-1">Base Serasa</p>
+            </div>
+          </div>
+
+          <!-- AdSense Inter-Step 3 -->
+          <div class="my-6">
+            <AdSense adSlot="6441683637" />
+          </div>
+
+          <button
+            @click="showResults"
+            class="w-full py-4 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-sm transition-colors duration-200 flex items-center justify-center"
+          >
+            Ver Opções de Financiamento
+            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Step 4: Results -->
+        <div v-if="currentStep === 4" class="p-8 animate-fade-in">
+          <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4 animate-bounce-small">
+              <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900">Pré-Aprovação Disponível!</h2>
+            <p class="text-gray-600 mt-2">Com base no seu perfil, calculamos as seguintes condições.</p>
+          </div>
+
+          <!-- Scenarios -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div 
+              v-for="scenario in scenarios" 
+              :key="scenario.months"
+              class="border rounded-xl p-4 cursor-pointer transition-all hover:shadow-md"
+              :class="selectedScenario === scenario.months ? 'border-blue-500 bg-blue-50 ring-1 ring-blue-500' : 'border-gray-200 bg-white'"
+              @click="selectedScenario = scenario.months"
+            >
+              <div class="text-center">
+                <p class="text-sm font-bold text-gray-500 uppercase">{{ scenario.months }}x Parcelas</p>
+                <p class="text-2xl font-black text-blue-600 my-2">{{ formatCurrencyValue(scenario.installment) }}</p>
+                <p class="text-xs text-gray-500">Total: {{ formatCurrencyValue(scenario.total) }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- AdSense Inter-Step 4 -->
+          <div class="my-6">
+            <AdSense adSlot="6441683637" />
+          </div>
+
+          <!-- Bank Recommendations -->
+          <div class="space-y-4 mb-8">
+            <h3 class="font-bold text-gray-900">Bancos Recomendados</h3>
+            <div 
+              v-for="bank in recommendedBanks" 
+              :key="bank.name"
+              class="bg-white border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:border-blue-300 transition-colors"
+            >
               <div class="flex items-center">
-                <div class="h-8 w-8 rounded-full bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-500 mr-3">
+                <div class="h-10 w-10 rounded-lg bg-gray-100 flex items-center justify-center font-bold text-gray-600 mr-4">
                   {{ bank.initials }}
                 </div>
-                <span class="font-medium text-gray-700">{{ bank.name }}</span>
+                <div>
+                  <p class="font-bold text-gray-900">{{ bank.name }}</p>
+                  <p class="text-xs text-green-600 font-medium">{{ bank.approvalChance }}% de chance de aprovação</p>
+                </div>
               </div>
-              <NuxtLink :to="bank.route" class="text-sm text-blue-600 font-semibold hover:text-blue-800">
+              <NuxtLink 
+                :to="bank.route"
+                class="px-4 py-2 bg-blue-600 text-white text-sm font-bold rounded-lg hover:bg-blue-700 transition-colors"
+              >
                 Solicitar
               </NuxtLink>
             </div>
           </div>
 
+          <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
+            <p class="flex items-start">
+              <svg class="w-5 h-5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Os valores são estimados e podem variar de acordo com a análise final da instituição financeira.
+            </p>
+          </div>
         </div>
+
       </div>
 
- 
-
-      <!-- SEO Content -->
-      <div class="prose prose-blue max-w-none mt-12 bg-white p-6 rounded-xl shadow-sm">
-        <h2>Como conseguir financiar um carro sem entrada?</h2>
-        <p>
-          O financiamento de veículos sem entrada, também conhecido como <strong>financiamento 100%</strong>, é uma modalidade de crédito onde o banco cobre o valor total do automóvel. Para conseguir essa aprovação, as instituições financeiras analisam rigorosamente o seu <strong>Score de Crédito</strong> e sua capacidade de pagamento (Renda).
-        </p>
-        
-        <h3>O papel do Score no Financiamento Zero Entrada</h3>
-        <p>
-          Seu Score (pontuação de 0 a 1000) é o principal termômetro.
-        </p>
-        <ul>
-          <li><strong>Acima de 700:</strong> Altas chances de aprovação sem entrada e com taxas reduzidas.</li>
-          <li><strong>Entre 400 e 700:</strong> Possível, mas pode depender de um bom relacionamento com o banco.</li>
-          <li><strong>Abaixo de 400:</strong> Mais difícil. Recomenda-se dar uma entrada de pelo menos 20% ou tentar um consórcio.</li>
-        </ul>
-
-        <h3>Dicas para ser aprovado</h3>
-        <ol>
-          <li>Mantenha seu Cadastro Positivo ativo.</li>
-          <li>Evite pedir muitos cartões de crédito ao mesmo tempo.</li>
-          <li>Pague suas contas em dia para aumentar seu Score.</li>
-        </ol>
-      </div>
-
-      <!-- AdSense Bottom -->
-      <AdSense adSlot="6441683637" />
-
+   
     </div>
   </div>
 </template>
@@ -189,52 +343,71 @@
 <script setup>
 import { ref, computed } from 'vue';
 
+// State
+const currentStep = ref(1);
+const loading = ref(false);
 const cpf = ref('');
 const vehicleValue = ref(0);
 const formattedValue = ref('');
-const loading = ref(false);
-const result = ref(false);
+const selectedScenario = ref(48);
 
-const userData = ref({
+// Data Containers
+const apiData = ref({
   name: '',
-  income: 0
+  income: 0,
+  score: 0,
+  phones: [],
+  emails: [],
+  addresses: []
 });
 
-const scoreData = ref({
-  value: 0,
-  range: ''
+const selectedData = ref({
+  phone: null,
+  email: null,
+  address: null
 });
 
-const simulation = ref({
-  installment: 0,
-  rate: 0
+const metrics = ref({
+  purchasingPower: 0,
+  dti: 0
 });
 
-// Mock Banks
-const recommendedBanks = [
-  { name: 'Santander Financiamentos', initials: 'SAN', route: '/financiamento/santander' },
-  { name: 'BV Financeira', initials: 'BV', route: '/financiamento/bv-financeira' },
-  { name: 'Banco Pan', initials: 'PAN', route: '/financiamento/banco-pan' },
-  { name: 'Itaú Veículos', initials: 'IT', route: '/financiamento/itau-veiculos' }
-];
+const scenarios = ref([]);
 
-// Computed Styles
+const recommendedBanks = ref([
+  { name: 'Santander', initials: 'SAN', route: '/financiamento/santander', approvalChance: 0 },
+  { name: 'BV Financeira', initials: 'BV', route: '/financiamento/bv-financeira', approvalChance: 0 },
+  { name: 'Banco Pan', initials: 'PAN', route: '/financiamento/banco-pan', approvalChance: 0 },
+  { name: 'Itaú', initials: 'IT', route: '/financiamento/itau-veiculos', approvalChance: 0 }
+]);
+
+// Computed
 const scoreColorClass = computed(() => {
-  if (scoreData.value < 300) return 'text-red-600';
-  if (scoreData.value < 600) return 'text-yellow-600';
+  if (apiData.value.score < 400) return 'text-red-600';
+  if (apiData.value.score < 700) return 'text-yellow-600';
   return 'text-green-600';
 });
 
 const scoreBgClass = computed(() => {
-  if (scoreData.value < 300) return 'bg-red-500';
-  if (scoreData.value < 600) return 'bg-yellow-500';
+  if (apiData.value.score < 400) return 'bg-red-500';
+  if (apiData.value.score < 700) return 'bg-yellow-500';
   return 'bg-green-500';
 });
 
-// Formatters
-const formatCurrency = (e) => {
-  let value = e.target.value.replace(/\D/g, '');
-  vehicleValue.value = (parseFloat(value) / 100);
+// Methods
+const getStepLabel = (step) => {
+  switch(step) {
+    case 1: return 'Dados';
+    case 2: return 'Confirmação';
+    case 3: return 'Análise';
+    case 4: return 'Resultado';
+    default: return '';
+  }
+};
+
+const formatCurrency = (event) => {
+  let value = event.target.value.replace(/\D/g, '');
+  vehicleValue.value = parseFloat(value) / 100;
   formattedValue.value = (parseFloat(value) / 100).toLocaleString('pt-BR', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
@@ -245,109 +418,188 @@ const formatCurrencyValue = (val) => {
   return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 };
 
-const maskCPF = (e) => {
-  let value = e.target.value.replace(/\D/g, '');
+const maskCPF = () => {
+  let value = cpf.value.replace(/\D/g, '');
   if (value.length > 11) value = value.slice(0, 11);
   cpf.value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
 };
 
-const formatName = (fullName) => {
-  if (!fullName) return 'Visitante';
-  const names = fullName.split(' ');
-  return names[0] + (names.length > 1 ? ' ' + names[names.length - 1] : '');
+const formatPhone = (phone) => {
+  if (!phone) return '';
+  const cleaned = phone.replace(/\D/g, '');
+  if (cleaned.length === 11) return cleaned.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+  return cleaned.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
 };
 
-// Logic
-const handleSimulation = async () => {
+// API Logic
+const fetchData = async () => {
   if (!cpf.value || !vehicleValue.value) return;
   
   loading.value = true;
-  result.value = false;
+  const cleanCpf = cpf.value.replace(/\D/g, '');
 
   try {
-    const cleanCpf = cpf.value.replace(/\D/g, '');
-    
-    // Call API
     const response = await $fetch(`https://proxy-serasa.bispoednei3.workers.dev/`, {
       query: { cpf: cleanCpf }
     });
 
-    if (response) {
-      processApiData(response);
-    } else {
-      mockSimulation();
-    }
-
-  } catch (e) {
-    console.error('Simulation error:', e);
-    mockSimulation();
+    processApiData(response);
+    currentStep.value = 2;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    // Fallback for demo/error
+    mockData();
+    currentStep.value = 2;
   } finally {
     loading.value = false;
-    result.value = true;
   }
 };
 
 const processApiData = (data) => {
-  // Extract Name
-  if (data.DADOS && data.DADOS.NOME) {
-    userData.value.name = data.DADOS.NOME;
+  // Basic Info
+  if (data.DADOS) {
+    apiData.value.name = data.DADOS.NOME;
+    apiData.value.income = parseFloat(data.DADOS.RENDA?.replace(',', '.') || '0');
   }
 
-  // Extract Score
-  let score = 500; // Default
+  // Phones
+  if (data.TELEFONE) {
+    apiData.value.phones = data.TELEFONE.map(p => ({
+      number: `${p.DDD}${p.TELEFONE}`,
+      type: p.TIPO_TELEFONE === 3 ? 'Celular' : 'Fixo',
+      isWhatsapp: p.CLASSIFICACAO?.includes('A') || false
+    }));
+    if (apiData.value.phones.length > 0) selectedData.value.phone = apiData.value.phones[0];
+  }
+
+  // Addresses
+  if (data.ENDERECOS) {
+    apiData.value.addresses = data.ENDERECOS.map(a => ({
+      street: `${a.LOGR_TIPO} ${a.LOGR_NOME}`,
+      number: a.LOGR_NUMERO,
+      district: a.BAIRRO,
+      city: a.CIDADE,
+      state: a.UF,
+      cep: a.CEP
+    }));
+    if (apiData.value.addresses.length > 0) selectedData.value.address = apiData.value.addresses[0];
+  }
+
+  // Score
   if (data.SCORE && data.SCORE.length > 0) {
-    // Try to find CSB8 or CSBA
-    const scoreObj = data.SCORE[0];
-    if (scoreObj.CSB8) score = parseInt(scoreObj.CSB8);
-    else if (scoreObj.CSBA) score = parseInt(scoreObj.CSBA);
-    
-    scoreData.value.range = scoreObj.CSB8_FAIXA || scoreObj.CSBA_FAIXA || 'MÉDIO';
+    const s = data.SCORE[0];
+    apiData.value.score = parseInt(s.CSB8 || s.CSBA || '500');
   } else {
-    scoreData.value.range = 'MÉDIO';
+    apiData.value.score = 500;
   }
-  scoreData.value.value = score;
-
-  calculateLoan(score);
 };
 
-const mockSimulation = () => {
-  // Fallback simulation
-  userData.value.name = '';
-  const randomScore = Math.floor(Math.random() * (850 - 350 + 1)) + 350;
-  scoreData.value.value = randomScore;
-  scoreData.value.range = randomScore > 700 ? 'ALTO' : (randomScore > 400 ? 'MÉDIO' : 'BAIXO');
-  
-  calculateLoan(randomScore);
+const mockData = () => {
+  apiData.value = {
+    name: 'CLIENTE SIMULAÇÃO',
+    income: 3500.00,
+    score: 650,
+    phones: [
+      { number: '11999998888', type: 'Celular', isWhatsapp: true },
+      { number: '1133334444', type: 'Fixo', isWhatsapp: false }
+    ],
+    addresses: [
+      { street: 'Rua Exemplo', number: '123', district: 'Centro', city: 'São Paulo', state: 'SP', cep: '01001-000' }
+    ]
+  };
+  selectedData.value.phone = apiData.value.phones[0];
+  selectedData.value.address = apiData.value.addresses[0];
 };
 
-const calculateLoan = (score) => {
-  // Interest Rate Logic based on Score
-  let rate = 2.5; // Default monthly rate
-  if (score > 800) rate = 1.49;
-  else if (score > 600) rate = 1.89;
-  else if (score > 400) rate = 2.39;
-  else rate = 2.99;
+const confirmData = () => {
+  calculateMetrics();
+  currentStep.value = 3;
+};
 
-  simulation.value.rate = rate;
+const calculateMetrics = () => {
+  const score = apiData.value.score;
+  const income = apiData.value.income || 2000;
+  
+  // Purchasing Power (0-100)
+  // Logic: Score weight (60%) + Income/Vehicle Ratio (40%)
+  const scorePart = (score / 1000) * 60;
+  const ratio = (income * 12) / vehicleValue.value;
+  const incomePart = Math.min(ratio * 20, 40);
+  
+  metrics.value.purchasingPower = Math.round(scorePart + incomePart);
+};
 
-  // PMT Formula: P * i / (1 - (1+i)^-n)
-  const n = 48; // 48 months
-  const i = rate / 100;
-  const pv = vehicleValue.value;
+const getPurchasingPowerLabel = () => {
+  const pp = metrics.value.purchasingPower;
+  if (pp > 80) return 'Excelente';
+  if (pp > 60) return 'Bom';
+  if (pp > 40) return 'Regular';
+  return 'Baixo';
+};
+
+const showResults = () => {
+  calculateScenarios();
+  calculateBankChances();
+  currentStep.value = 4;
+};
+
+const calculateScenarios = () => {
+  const score = apiData.value.score;
+  let baseRate = 2.5;
   
-  const pmt = (pv * i) / (1 - Math.pow(1 + i, -n));
-  
-  simulation.value.installment = pmt;
+  if (score > 800) baseRate = 1.49;
+  else if (score > 600) baseRate = 1.89;
+  else if (score > 400) baseRate = 2.39;
+  else baseRate = 2.99;
+
+  const terms = [36, 48, 60];
+  scenarios.value = terms.map(months => {
+    // Adjust rate slightly for longer terms
+    const rate = baseRate + (months > 48 ? 0.2 : 0);
+    const i = rate / 100;
+    const pv = vehicleValue.value;
+    const pmt = (pv * i) / (1 - Math.pow(1 + i, -months));
+    
+    return {
+      months,
+      rate,
+      installment: pmt,
+      total: pmt * months
+    };
+  });
+};
+
+const calculateBankChances = () => {
+  const score = apiData.value.score;
+  recommendedBanks.value = recommendedBanks.value.map(bank => {
+    let chance = 50;
+    if (score > 700) chance += 30;
+    else if (score > 500) chance += 10;
+    else chance -= 10;
+    
+    // Random variation
+    chance += Math.floor(Math.random() * 10) - 5;
+    return { ...bank, approvalChance: Math.min(98, Math.max(10, chance)) };
+  }).sort((a, b) => b.approvalChance - a.approvalChance);
 };
 </script>
 
 <style scoped>
 .animate-fade-in {
-  animation: fadeIn 0.5s ease-out;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-bounce-small {
+  animation: bounceSmall 2s infinite;
 }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceSmall {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 </style>
