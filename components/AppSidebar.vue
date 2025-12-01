@@ -78,6 +78,14 @@
         <h3 class="sidebar__section-title">Veículos</h3>
         <ul class="sidebar__menu">
           <li class="sidebar__menu-item">
+            <NuxtLink to="/financiamento-veiculos-sem-entrada" class="sidebar__link" @click.native="closeSidebar">
+              Simulador Financiamento
+              <span class="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                Novo
+              </span>
+            </NuxtLink>
+          </li>
+          <li class="sidebar__menu-item">
             <span class="sidebar__link sidebar__link--disabled">
               Gerador de Placa
               <span class="badge">Em breve</span>

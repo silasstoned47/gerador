@@ -91,7 +91,7 @@ Sempre que criar uma nova página (`.vue`), siga este ritual:
 2.  **Objetivo da Página:** Qual problema ela resolve? (Ex: Validar Cartão de Crédito).
 3.  **Palavra-Chave Foco:** Defina a keyword principal e 3 variações de cauda longa.
 4.  **Estrutura da Dobra Superior:**
-    *   [ ] H1 com a Palavra-Chave Principal.
+    *   [ ] H1 com a Palavra-Chave Principal. Evite colocar o ano atual no título pensando em ter um conteúdo Evergreen
     *   [ ] Bloco AdSense (Responsivo/Retângulo Grande).
     *   [ ] Elemento de Ação Principal (A ferramenta ou resumo da resposta).
     *   [ ] **Links de Retenção:** 3 botões ou links textuais para ferramentas irmãs logo abaixo do título ou da ferramenta.
