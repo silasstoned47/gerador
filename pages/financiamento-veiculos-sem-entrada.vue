@@ -1,23 +1,23 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-8 font-sans text-gray-900">
+  <div class="min-h-screen bg-gray-50 py-4 font-sans text-gray-900">
     <Head>
       <Title>Simulador de Financiamento: Carro Sem Entrada - Análise Completa</Title>
       <Meta name="description" content="Simule financiamento de veículos sem entrada. Análise detalhada de Score, confirmação de dados e aprovação instantânea." />
     </Head>
 
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div ref="simulatorContainer" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
-      <div class="text-center mb-8">
-        <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl tracking-tight">
+      <div class="text-center mb-4">
+        <h1 class="text-2xl font-extrabold text-gray-900 sm:text-3xl tracking-tight">
           Simulador de Financiamento
         </h1>
-        <p class="mt-3 max-w-2xl mx-auto text-lg text-gray-500">
+        <p class="mt-2 max-w-2xl mx-auto text-base text-gray-500">
           Análise de crédito profissional para financiamento 100% sem entrada.
         </p>
       </div>
 
       <!-- Progress Steps -->
-      <div v-if="currentStep > 0" class="mb-8">
+      <div v-if="currentStep > 0" class="mb-6">
         <div class="flex items-center justify-between relative">
           <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-1 bg-gray-200 -z-10"></div>
           <div 
@@ -40,7 +40,7 @@
       </div>
 
       <!-- AdSense Top -->
-      <div class="mb-8">
+      <div class="mb-4">
         <AdSense adSlot="6441683637" />
       </div>
 
@@ -48,9 +48,9 @@
       <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 transition-all duration-500">
         
         <!-- Step 1: Initial Data -->
-        <div v-if="currentStep === 1" class="p-8 animate-fade-in">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">Dados Iniciais</h2>
-          <form @submit.prevent="fetchData" class="space-y-6">
+        <div v-if="currentStep === 1" class="p-5 animate-fade-in">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">Dados Iniciais</h2>
+          <form @submit.prevent="fetchData" class="space-y-4">
             <div>
               <label for="vehicle-value" class="block text-sm font-medium text-gray-700 mb-1">Valor do Veículo</label>
               <div class="relative rounded-md shadow-sm">
@@ -107,18 +107,18 @@
         </div>
 
         <!-- Step 2: Data Confirmation -->
-        <div v-if="currentStep === 2" class="p-8 animate-fade-in">
-          <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 mb-4">
-              <svg class="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div v-if="currentStep === 2" class="p-5 animate-fade-in">
+          <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-100 mb-3">
+              <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h2 class="text-2xl font-bold text-gray-900">Confirme seus Dados</h2>
-            <p class="text-gray-600 mt-2">Encontramos as seguintes informações associadas ao seu CPF.</p>
+            <h2 class="text-xl font-bold text-gray-900">Confirme seus Dados</h2>
+            <p class="text-gray-600 mt-1 text-sm">Encontramos as seguintes informações associadas ao seu CPF.</p>
           </div>
 
-          <div class="space-y-6">
+          <div class="space-y-4">
             <!-- Name -->
             <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
               <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Nome Completo</span>
@@ -191,14 +191,14 @@
         </div>
 
         <!-- Step 3: Credit Analysis -->
-        <div v-if="currentStep === 3" class="p-8 animate-fade-in">
-          <div class="text-center mb-8">
-            <h2 class="text-2xl font-bold text-gray-900">Análise de Crédito</h2>
-            <p class="text-gray-600 mt-2">Calculando seu potencial de financiamento...</p>
+        <div v-if="currentStep === 3" class="p-5 animate-fade-in">
+          <div class="text-center mb-6">
+            <h2 class="text-xl font-bold text-gray-900">Análise de Crédito</h2>
+            <p class="text-gray-600 mt-1 text-sm">Calculando seu potencial de financiamento...</p>
           </div>
 
           <!-- Score Thermometer -->
-          <div class="mb-8 bg-gray-50 p-6 rounded-xl border border-gray-200">
+          <div class="mb-6 bg-gray-50 p-4 rounded-xl border border-gray-200">
             <div class="flex justify-between items-end mb-3">
               <span class="text-sm font-bold text-gray-700 uppercase">Seu Score</span>
               <div class="text-right">
@@ -264,19 +264,19 @@
         </div>
 
         <!-- Step 4: Results -->
-        <div v-if="currentStep === 4" class="p-8 animate-fade-in">
-          <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 mb-4 animate-bounce-small">
-              <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div v-if="currentStep === 4" class="p-5 animate-fade-in">
+          <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-3 animate-bounce-small">
+              <svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h2 class="text-2xl font-bold text-gray-900">Pré-Aprovação Disponível!</h2>
-            <p class="text-gray-600 mt-2">Com base no seu perfil, calculamos as seguintes condições.</p>
+            <h2 class="text-xl font-bold text-gray-900">Pré-Aprovação Disponível!</h2>
+            <p class="text-gray-600 mt-1 text-sm">Com base no seu perfil, calculamos as seguintes condições.</p>
           </div>
 
           <!-- Scenarios -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
             <div 
               v-for="scenario in scenarios" 
               :key="scenario.months"
@@ -345,11 +345,19 @@ import { ref, computed } from 'vue';
 
 // State
 const currentStep = ref(1);
+const simulatorContainer = ref(null);
 const loading = ref(false);
 const cpf = ref('');
 const vehicleValue = ref(0);
 const formattedValue = ref('');
 const selectedScenario = ref(48);
+
+// Scroll Helper
+const scrollToTop = () => {
+  if (simulatorContainer.value) {
+    simulatorContainer.value.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
 
 // Data Containers
 const apiData = ref({
@@ -445,11 +453,13 @@ const fetchData = async () => {
 
     processApiData(response);
     currentStep.value = 2;
+    scrollToTop();
   } catch (error) {
     console.error('Error fetching data:', error);
     // Fallback for demo/error
     mockData();
     currentStep.value = 2;
+    scrollToTop();
   } finally {
     loading.value = false;
   }
@@ -514,6 +524,7 @@ const mockData = () => {
 const confirmData = () => {
   calculateMetrics();
   currentStep.value = 3;
+  scrollToTop();
 };
 
 const calculateMetrics = () => {
@@ -541,6 +552,7 @@ const showResults = () => {
   calculateScenarios();
   calculateBankChances();
   currentStep.value = 4;
+  scrollToTop();
 };
 
 const calculateScenarios = () => {
