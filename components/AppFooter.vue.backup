@@ -10,9 +10,24 @@
             <span class="text-xl font-bold">Gerador II</span>
           </div>
           <p class="text-gray-600 mb-4">
-            Plataforma completa de ferramentas online. 
+            Plataforma completa de ferramentas online para gerar e validar documentos brasileiros. 
+            Todos os dados gerados são fictícios e devem ser usados apenas para testes.
           </p>
-          
+          <div class="bg-white-900 border border-yellow-600 rounded-lg p-4">
+            <p class="text-yellow-800 text-sm">
+              ⚠️ <strong>Aviso Legal:</strong> Dados fictícios - Uso exclusivo para testes. 
+              Consulte nossos <NuxtLink to="/termos" class="underline hover:text-yellow-100">Termos de Uso</NuxtLink> antes de prosseguir.
+            </p>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Geradores</h3>
+          <ul class="space-y-2">
+            <li><NuxtLink to="/gerador/cpf" class="text-gray-600 hover:text-gray-900 transition-colors">Gerador de CPF</NuxtLink></li>
+            <li><NuxtLink to="/gerador/celular" class="text-gray-600 hover:text-gray-900 transition-colors">Gerador de Celular</NuxtLink></li>
+            <li><NuxtLink to="/gerador/cnpj" class="text-gray-600 hover:text-gray-900 transition-colors">Gerador de CNPJ</NuxtLink></li>
+          </ul>
         </div>
         
         <div>

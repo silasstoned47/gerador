@@ -11,7 +11,29 @@
      
 
       <div class="sidebar__section">
+        <h3 class="sidebar__section-title">Documentos Pessoais</h3>
         <ul class="sidebar__menu">
+          <li class="sidebar__menu-item">
+            <NuxtLink to="/gerador/cpf" class="sidebar__link" @click.native="closeSidebar">
+              Gerador de CPF
+            </NuxtLink>
+          </li>
+          <li class="sidebar__menu-item">
+            <NuxtLink to="/gerador/cnpj" class="sidebar__link" @click.native="closeSidebar">
+              Gerador de CNPJ
+            </NuxtLink>
+          </li>
+          <li class="sidebar__menu-item">
+            <NuxtLink to="/gerador/cnpj-alfanumerico" class="sidebar__link" @click.native="closeSidebar">
+              Gerador de CNPJ Alfanumérico
+            </NuxtLink>
+          </li>
+          <li class="sidebar__menu-item">
+            <span class="sidebar__link sidebar__link--disabled">
+              Gerador de RG
+              <span class="badge">Em breve</span>
+            </span>
+          </li>
           <li class="sidebar__menu-item">
             <NuxtLink to="/gerador/curriculo" class="sidebar__link" @click.native="closeSidebar">
               Gerador de Currículo
@@ -34,9 +56,25 @@
         <h3 class="sidebar__section-title">Contatos</h3>
         <ul class="sidebar__menu">
           <li class="sidebar__menu-item">
+            <NuxtLink to="/gerador/celular" class="sidebar__link" @click.native="closeSidebar">
+              Gerador de Celular
+            </NuxtLink>
+          </li>
+          <li class="sidebar__menu-item">
+            <NuxtLink to="/gerador/telefone" class="sidebar__link" @click.native="closeSidebar">
+              Gerador de Telefone
+            </NuxtLink> 
+          </li>
+          <li class="sidebar__menu-item">
             <NuxtLink to="/gerador/qr-code" class="sidebar__link" @click.native="closeSidebar">
               Gerador de QR Code
             </NuxtLink>
+          </li>
+          <li class="sidebar__menu-item">
+            <span class="sidebar__link sidebar__link--disabled">
+              Gerador de E-mail
+              <span class="badge">Em breve</span>
+            </span>
           </li>
         </ul>
       </div>
