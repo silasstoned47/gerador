@@ -34,6 +34,11 @@
               <span class="badge">Em breve</span>
             </span>
           </li>
+          <li class="sidebar__menu-item">
+            <NuxtLink to="/gerador/curriculo" class="sidebar__link" @click.native="closeSidebar">
+              Gerador de Currículo
+            </NuxtLink>
+          </li>
         </ul>
       </div>
 

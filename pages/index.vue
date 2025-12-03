@@ -1,79 +1,133 @@
 <template>
-  <div class="pt-4 pb-16">
-    <!-- Features Section -->
-    <section class="py-12 md:py-16 bg-white">
+  <div class="min-h-screen">
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 md:py-28">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <span class="inline-block bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-full mb-4">DOCUMENTOS PESSOAIS</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ferramentas Essenciais</h2>
-          <p class="text-gray-600 max-w-2xl mx-auto text-lg">
-            Soluções rápidas para suas necessidades de documentação
+        <div class="text-center">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            Ferramentas Online Gratuitas para
+            <span class="text-blue-600">Desenvolvedores</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            Gere e valide documentos brasileiros para testes de forma rápida, segura e totalmente gratuita
           </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Documentos Pessoais -->
-          <div class="group bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300 hover:-translate-y-1">
-            <div class="p-6">
-              <NuxtLink to="/gerador/cpf" class="block">
-                <div class="flex items-center mb-4">
-                  <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mr-4 group-hover:bg-indigo-100 transition-colors">
-                    <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                  </div>
-                  <h3 class="text-xl font-bold text-gray-900">Gerador de CPF</h3>
-                </div>
-                <p class="text-gray-600 mb-6">Gere CPFs válidos para testes, com opções de formatação e estado específico.</p>
-                <div class="flex justify-between items-center">
-                  <span class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center group-hover:translate-x-1 transition-transform">
-                    Usar Ferramenta
-                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </span>
-                  <span class="text-xs bg-indigo-50 text-indigo-600 px-2 py-1 rounded-full">Popular</span>
-                </div>
-              </NuxtLink>
-            </div>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <NuxtLink 
+              to="/gerador/cpf" 
+              class="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+            >
+              Começar Agora
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </NuxtLink>
+            <NuxtLink 
+              to="/todas-ferramentas" 
+              class="inline-flex items-center px-8 py-4 border-2 border-gray-300 text-lg font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+            >
+              Ver Todas as Ferramentas
+            </NuxtLink>
           </div>
-
-          <!-- Para Desenvolvedores -->
-          <div class="group bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300 hover:-translate-y-1">
-            <div class="p-6">
-              <NuxtLink to="/dev" class="block">
-                <div class="flex items-center mb-4">
-                  <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mr-4 group-hover:bg-emerald-100 transition-colors">
-                    <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                    </svg>
-                  </div>
-                  <h3 class="text-xl font-bold text-gray-900">Para Desenvolvedores</h3>
-                </div>
-                <p class="text-gray-600 mb-6">APIs e ferramentas para integrar em seus projetos e aplicações.</p>
-                <div class="flex justify-between items-center">
-                  <span class="text-emerald-600 hover:text-emerald-800 font-medium flex items-center group-hover:translate-x-1 transition-transform">
-                    Ver Documentação
-                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </span>
-                  <span class="text-xs bg-emerald-50 text-emerald-600 px-2 py-1 rounded-full">API</span>
-                </div>
-              </NuxtLink>
+          
+          <!-- Trust Indicators -->
+          <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-3">
+                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900">100% Gratuito</h3>
+              <p class="text-sm text-gray-600">Sem taxas ou assinaturas</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900">Seguro e Privado</h3>
+              <p class="text-sm text-gray-600">Sem registro necessário</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-3">
+                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-gray-900">Resultados Instantâneos</h3>
+              <p class="text-sm text-gray-600">Geração em tempo real</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Categories Section -->   
-    <section class="py-12 md:py-16 bg-gradient-to-b from-white to-gray-50">
+    <!-- About Section -->
+    <section class="py-16 md:py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <span class="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-4 shadow-md">CATEGORIAS</span>
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Encontre a Ferramenta Perfeita</h2>
-          <p class="text-gray-600 max-w-2xl mx-auto text-lg">Explore nossas categorias e descubra ferramentas úteis para suas necessidades</p>
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            O que é o Gerador II?
+          </h2>
+          <p class="text-lg text-gray-600 mb-6">
+            O Gerador II é uma plataforma completa de ferramentas online que permite gerar e validar documentos brasileiros para fins de teste e desenvolvimento. Nossa missão é facilitar o trabalho de desenvolvedores, testadores e estudantes, fornecendo dados fictícios válidos de forma rápida e gratuita.
+          </p>
+          <p class="text-lg text-gray-600">
+            Todas as ferramentas são gratuitas, não requerem cadastro e geram resultados instantâneos. Os dados gerados são exclusivamente para uso em ambientes de teste e desenvolvimento, nunca devendo ser utilizados para fins ilegais ou fraudulentos.
+          </p>
+        </div>
+
+        <!-- Key Features -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Dados Válidos</h3>
+            <p class="text-sm text-gray-600">Todos os documentos gerados seguem as regras oficiais de validação</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Economia de Tempo</h3>
+            <p class="text-sm text-gray-600">Gere múltiplos documentos em segundos, sem processos manuais</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Para Desenvolvedores</h3>
+            <p class="text-sm text-gray-600">APIs e ferramentas pensadas para integração em projetos</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Educacional</h3>
+            <p class="text-sm text-gray-600">Aprenda sobre algoritmos de validação de documentos</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->   
+    <section class="py-16 md:py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nossas Ferramentas</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Explore nossas categorias e encontre a ferramenta perfeita para suas necessidades de teste e desenvolvimento
+          </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -86,19 +140,19 @@
                 </svg>
               </div>
               <h3 class="text-2xl font-bold text-gray-900 mb-3">Documentos Pessoais</h3>
-              <p class="text-gray-600 mb-6">Gere e valide CPF, RG, CNH e outros documentos de identificação.</p>
-              <div class="space-y-3 mb-6">
+              <p class="text-gray-600 mb-6">Gere e valide CPF, CNPJ, RG e outros documentos de identificação para testes em seus sistemas.</p>
+              <div class="space-y-2 mb-6">
                 <div class="flex items-center text-gray-700 text-sm">
                   <span class="w-2 h-2 bg-indigo-500 rounded-full mr-3"></span>
-                  CPF Gerador e Validador
+                  Gerador de CPF
                 </div>
                 <div class="flex items-center text-gray-700 text-sm">
                   <span class="w-2 h-2 bg-indigo-500 rounded-full mr-3"></span>
-                  RG Gerador
+                  Gerador de CNPJ
                 </div>
                 <div class="flex items-center text-gray-700 text-sm">
                   <span class="w-2 h-2 bg-indigo-500 rounded-full mr-3"></span>
-                  CNH Gerador
+                  Gerador de Currículo
                 </div>
               </div>
               <span class="text-indigo-600 hover:text-indigo-800 font-medium inline-flex items-center group-hover:translate-x-1 transition-transform">
@@ -119,8 +173,8 @@
                 </svg>
               </div>
               <h3 class="text-2xl font-bold text-gray-900 mb-3">Contatos</h3>
-              <p class="text-gray-600 mb-6">Gere números de telefone, celular e e-mails para testes.</p>
-              <div class="space-y-3 mb-6">
+              <p class="text-gray-600 mb-6">Gere números de telefone, celular, e-mails e QR Codes válidos para seus testes de integração.</p>
+              <div class="space-y-2 mb-6">
                 <div class="flex items-center text-gray-700 text-sm">
                   <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
                   Gerador de Celular
@@ -131,7 +185,7 @@
                 </div>
                 <div class="flex items-center text-gray-700 text-sm">
                   <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                  Gerador de E-mail
+                  Gerador de QR Code
                 </div>
               </div>
               <span class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center group-hover:translate-x-1 transition-transform">
@@ -143,40 +197,7 @@
             </NuxtLink>
           </div>
 
-          <!-- Veículos -->
-          <div class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-emerald-100 hover:-translate-y-1">
-            <NuxtLink to="/categorias/veiculos" class="block p-8">
-              <div class="w-14 h-14 bg-emerald-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-emerald-100 transition-colors">
-                <svg class="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 17l-1-4h10l-1 4m1-4h1a2 2 0 012 2v6a2 2 0 01-2 2h-1m-6 0H7a2 2 0 01-2-2v-6a2 2 0 012-2h1m-4-3h16v-2H4v2z"></path>
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-3">Veículos</h3>
-              <p class="text-gray-600 mb-6">Gere e valide dados de veículos como placas, RENAVAM e chassi.</p>
-              <div class="space-y-3 mb-6">
-                <div class="flex items-center text-gray-700 text-sm">
-                  <span class="w-2 h-2 bg-emerald-500 rounded-full mr-3"></span>
-                  Gerador de Placa
-                </div>
-                <div class="flex items-center text-gray-700 text-sm">
-                  <span class="w-2 h-2 bg-emerald-500 rounded-full mr-3"></span>
-                  Gerador de RENAVAM
-                </div>
-                <div class="flex items-center text-gray-700 text-sm">
-                  <span class="w-2 h-2 bg-emerald-500 rounded-full mr-3"></span>
-                  Gerador de Chassi
-                </div>
-              </div>
-              <span class="text-emerald-600 hover:text-emerald-800 font-medium inline-flex items-center group-hover:translate-x-1 transition-transform">
-                Explorar ferramentas
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </span>
-            </NuxtLink>
-          </div>
-
-          <!-- Validação -->
+          <!-- Validadores -->
           <div class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-purple-100 hover:-translate-y-1">
             <NuxtLink to="/validadores" class="block p-8">
               <div class="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-100 transition-colors">
@@ -184,20 +205,20 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                 </svg>
               </div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-3">Validação</h3>
-              <p class="text-gray-600 mb-6">Verifique a validade e formate documentos de forma simples e rápida.</p>
-              <div class="space-y-3 mb-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-3">Validadores</h3>
+              <p class="text-gray-600 mb-6">Verifique a validade de documentos e formate-os de forma simples e rápida em seus sistemas.</p>
+              <div class="space-y-2 mb-6">
                 <div class="flex items-center text-gray-700 text-sm">
                   <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
-                  Validador de CPF/CNPJ
+                  Validador de CPF
                 </div>
                 <div class="flex items-center text-gray-700 text-sm">
                   <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
-                  Validador de E-mail
+                  Validador de CNPJ
                 </div>
                 <div class="flex items-center text-gray-700 text-sm">
                   <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
-                  Validador de Cartão de Crédito
+                  Validador de Celular
                 </div>
               </div>
               <span class="text-purple-600 hover:text-purple-800 font-medium inline-flex items-center group-hover:translate-x-1 transition-transform">
@@ -208,123 +229,90 @@
               </span>
             </NuxtLink>
           </div>
-
-          <!-- Desenvolvedores -->
-          <div class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-amber-100 hover:-translate-y-1">
-            <NuxtLink to="/desenvolvedores" class="block p-8">
-              <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-amber-100 transition-colors">
-                <svg class="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-3">Para Desenvolvedores</h3>
-              <p class="text-gray-600 mb-6">APIs e ferramentas para integrar em seus projetos e aplicações.</p>
-              <div class="space-y-3 mb-6">
-                <div class="flex items-center text-gray-700 text-sm">
-                  <span class="w-2 h-2 bg-amber-500 rounded-full mr-3"></span>
-                  API de Documentos
-                </div>
-                <div class="flex items-center text-gray-700 text-sm">
-                  <span class="w-2 h-2 bg-amber-500 rounded-full mr-3"></span>
-                  Biblioteca JavaScript
-                </div>
-                <div class="flex items-center text-gray-700 text-sm">
-                  <span class="w-2 h-2 bg-amber-500 rounded-full mr-3"></span>
-                  Documentação Completa
-                </div>
-              </div>
-              <span class="text-amber-600 hover:text-amber-800 font-medium inline-flex items-center group-hover:translate-x-1 transition-transform">
-                Ver documentação
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </span>
-            </NuxtLink>
-          </div>
         </div>
 
-        <div class="text-center mt-16">
-          <NuxtLink to="/todas-ferramentas" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition-colors">
+        <div class="text-center mt-12">
+          <NuxtLink to="/todas-ferramentas" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors">
             Ver Todas as Ferramentas
-            <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
             </svg>
           </NuxtLink>
         </div>
       </div>
     </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-20 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Perguntas Frequentes</h2>
+          <p class="text-lg text-gray-600">Tire suas dúvidas sobre o Gerador II</p>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Os documentos gerados são válidos?</h3>
+            <p class="text-gray-600">Sim, todos os documentos gerados seguem as regras oficiais de validação (como dígitos verificadores de CPF e CNPJ). No entanto, são dados fictícios destinados exclusivamente para testes em ambientes de desenvolvimento.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Posso usar os dados gerados em produção?</h3>
+            <p class="text-gray-600">Não. Os dados gerados são exclusivamente para fins de teste e desenvolvimento. O uso de dados fictícios em sistemas de produção ou para fins fraudulentos é ilegal e pode resultar em consequências legais.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Preciso me cadastrar para usar as ferramentas?</h3>
+            <p class="text-gray-600">Não! Todas as ferramentas do Gerador II são completamente gratuitas e não requerem cadastro. Basta acessar a ferramenta desejada e começar a usar imediatamente.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">As ferramentas têm limite de uso?</h3>
+            <p class="text-gray-600">Não há limites rígidos de uso. Você pode gerar quantos documentos precisar para seus testes. Pedimos apenas que use de forma responsável e ética.</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Vocês armazenam os dados que eu gero?</h3>
+            <p class="text-gray-600">Não. Toda a geração de dados acontece no seu navegador. Não armazenamos, rastreamos ou compartilhamos nenhum dado gerado através de nossas ferramentas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+          Pronto para começar?
+        </h2>
+        <p class="text-xl text-blue-100 mb-8">
+          Experimente nossas ferramentas gratuitamente e acelere seu desenvolvimento
+        </p>
+        <NuxtLink 
+          to="/gerador/cpf" 
+          class="inline-flex items-center px-8 py-4 border-2 border-white text-lg font-medium rounded-lg text-white hover:bg-white hover:text-blue-600 transition-all"
+        >
+          Começar Agora
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </NuxtLink>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-
-// State for dropdown
-const showDropdown = ref(false);
-const selectedOption = ref('');
-
-const options = [
-  {
-    value: 'cpf',
-    label: 'Gerador de CPF',
-    description: 'Gere CPFs válidos para testes',
-    icon: 'document-text',
-    path: '/gerador/cpf'
-  },
-  {
-    value: 'cnpj',
-    label: 'Gerador de CNPJ',
-    description: 'Gere CNPJs válidos para testes',
-    icon: 'briefcase',
-    path: '/gerador/cnpj'
-  },
-  {
-    value: 'celular',
-    label: 'Gerador de Celular',
-    description: 'Gere números de celular válidos',
-    icon: 'device-mobile',
-    path: '/gerador/celular'
-  },
-  {
-    value: 'rg',
-    label: 'Gerador de RG',
-    description: 'Gere RGs válidos por estado',
-    icon: 'identification',
-    path: '/gerador/rg'
-  }
-];
-
-const selectOption = (option) => {
-  selectedOption.value = option.label;
-  showDropdown.value = false;
-  // In a real implementation, you would navigate to the selected path
-  // navigateTo(option.path);
-};
-
-// Close dropdown when clicking outside
-const handleClickOutside = (event) => {
-  const dropdown = event.target.closest('.dropdown-container');
-  if (!dropdown) {
-    showDropdown.value = false;
-  }
-};
-
-onMounted(() => {
-  document.addEventListener('click', handleClickOutside);
-  return () => {
-    document.removeEventListener('click', handleClickOutside);
-  };
-});
-
 // SEO Meta tags
 useSeoMeta({
-  title: 'Gerador II - Geradores e Validadores de Documentos',
-  description: 'Plataforma completa de ferramentas online para gerar e validar CPF, CNPJ, celular e outros documentos brasileiros. Dados fictícios para testes e desenvolvimento.',
-  keywords: 'gerador cpf, validador cpf, gerador cnpj, gerador celular, Gerador II, dados fictícios, testes',
+  title: 'Gerador II - Ferramentas Gratuitas para Desenvolvedores | Gere e Valide Documentos Brasileiros',
+  description: 'Plataforma completa e gratuita de ferramentas online para gerar e validar CPF, CNPJ, celular e outros documentos brasileiros. Dados fictícios válidos para testes e desenvolvimento. Sem cadastro, resultados instantâneos.',
+  keywords: 'gerador cpf, validador cpf, gerador cnpj, gerador celular, ferramentas desenvolvedor, dados teste, cpf válido, cnpj válido, gerador documentos',
   author: 'Gerador II',
-  ogTitle: 'Gerador II - Geradores e Validadores',
-  ogDescription: 'Gere e valide documentos brasileiros para testes. CPF, CNPJ, celular e muito mais.',
+  ogTitle: 'Gerador II - Ferramentas Gratuitas para Desenvolvedores',
+  ogDescription: 'Gere e valide documentos brasileiros para testes. CPF, CNPJ, celular e muito mais. 100% gratuito, sem cadastro.',
   ogType: 'website',
+  ogUrl: 'https://geradorii.com',
   twitterCard: 'summary_large_image'
 })
 
@@ -333,14 +321,43 @@ useSchemaOrg([
   {
     '@type': 'WebSite',
     name: 'Gerador II',
-    description: 'Plataforma de geradores e validadores de documentos brasileiros',
+    description: 'Plataforma gratuita de ferramentas para gerar e validar documentos brasileiros para testes e desenvolvimento',
     url: 'https://geradorii.com'
   },
   {
     '@type': 'Organization',
     name: 'Gerador II',
-    description: 'Gerador II para geração e validação de documentos brasileiros',
+    description: 'Ferramentas online gratuitas para desenvolvedores e testadores',
     url: 'https://geradorii.com'
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Os documentos gerados são válidos?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sim, todos os documentos gerados seguem as regras oficiais de validação. No entanto, são dados fictícios destinados exclusivamente para testes em ambientes de desenvolvimento.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Posso usar os dados gerados em produção?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Não. Os dados gerados são exclusivamente para fins de teste e desenvolvimento. O uso de dados fictícios em sistemas de produção ou para fins fraudulentos é ilegal.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Preciso me cadastrar para usar as ferramentas?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Não! Todas as ferramentas do Gerador II são completamente gratuitas e não requerem cadastro.'
+        }
+      }
+    ]
   }
 ])
 </script>
