@@ -105,17 +105,7 @@
               </div>
             </div>
 
-            <div class="flex items-start">
-              <div class="flex-shrink-0 h-6 w-6 text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <div class="ml-3">
-                <h3 class="text-sm font-medium text-gray-900">WhatsApp</h3>
-                <p class="text-sm text-gray-600">+55 (00) 00000-0000</p>
-              </div>
-            </div>
+          
           </div>
         </div>
 
