@@ -8,10 +8,15 @@
     aria-label="Aviso de cookies"
   >
     <p>
-      Usamos cookies para melhorar sua experiência e personalizar o conteúdo. 
-      <a href="/politica-privacidade" target="_blank" rel="noopener noreferrer">
-        Aviso de privacidade
-      </a>.
+      <span v-if="isMobile">
+        Usamos cookies para melhorar sua experiência.
+      </span>
+      <span v-else>
+        Usamos cookies para melhorar sua experiência e personalizar o conteúdo.
+        <a href="/politica-privacidade" target="_blank" rel="noopener noreferrer">
+          Aviso de privacidade
+        </a>.
+      </span>
     </p>
     <button @click="acceptCookies" type="button">
       Aceito
@@ -131,28 +136,43 @@ onBeforeUnmount(() => {
 
 #cookie-consent.compact {
   font-size: 13px;
-  padding: 1rem;
+  padding: 0.75rem 1rem; /* Reduced padding */
+  bottom: 10px; /* Lower position */
+  width: calc(100% - 20px);
+  border-radius: 8px;
 }
 
 #cookie-consent.compact p {
-  line-height: 1.4;
+  line-height: 1.3;
+  font-size: 12px;
+  flex: 1 1 auto; /* Allow text to shrink */
+}
+
+#cookie-consent.compact button {
+  padding: 0.5rem 1rem; /* Smaller button */
   font-size: 13px;
 }
 
 @media (max-width: 768px) {
   #cookie-consent {
-    align-items: stretch;
-    padding: 1rem;
-    font-size: 13px;
+    align-items: center; /* Center align items */
+    padding: 0.75rem 1rem;
+    font-size: 12px;
     width: calc(100% - 20px);
     left: 50%;
     transform: translateX(-50%);
+    bottom: 10px;
+    gap: 0.5rem; /* Reduce gap */
+  }
+
+  #cookie-consent p {
+     flex: 1; /* Take available space */
   }
 
   #cookie-consent button {
-    width: 100%;
-    font-size: 15px;
-    padding: 0.8rem 1rem;
+    width: auto; /* Don't force full width */
+    font-size: 13px;
+    padding: 0.5rem 1.2rem;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-4 font-sans text-gray-900">
+  <div class="min-h-screen bg-gray-50 py-2 sm:py-4 font-sans text-gray-900">
     <Head>
       <Title>Simulador de Financiamento: Carro Sem Entrada - Análise Completa</Title>
       <Meta name="description" content="Simule financiamento de veículos sem entrada. Análise detalhada de Score, confirmação de dados e aprovação instantânea." />
@@ -7,11 +7,11 @@
 
     <div ref="simulatorContainer" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Header -->
-      <div class="text-center mb-4">
-        <h1 class="text-2xl font-extrabold text-gray-900 sm:text-3xl tracking-tight">
+      <div class="text-center mb-2 sm:mb-4">
+        <h1 class="text-xl font-extrabold text-gray-900 sm:text-3xl tracking-tight">
           Simulador de Financiamento
         </h1>
-        <p class="mt-2 max-w-2xl mx-auto text-base text-gray-500">
+        <p class="mt-1 sm:mt-2 max-w-2xl mx-auto text-sm sm:text-base text-gray-500">
           Análise de crédito profissional para financiamento 100% sem entrada.
         </p>
       </div>
@@ -52,18 +52,19 @@
           <h2 class="text-xl font-bold text-gray-900 mb-4">Dados Iniciais</h2>
           <form @submit.prevent="fetchData" class="space-y-4">
             <div>
-              <label for="vehicle-value" class="block text-sm font-medium text-gray-700 mb-1">Valor do Veículo</label>
+              <label for="vehicle-value" class="block text-base sm:text-sm font-bold sm:font-medium text-gray-700 mb-1">Valor do Veículo</label>
               <div class="relative rounded-md shadow-sm">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <span class="text-gray-500 sm:text-sm">R$</span>
+                  <span class="text-gray-500 text-lg sm:text-sm font-bold">R$</span>
                 </div>
                 <input
                   type="text"
                   id="vehicle-value"
                   v-model="formattedValue"
                   @input="formatCurrency"
-                  class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 sm:text-lg border-gray-300 rounded-md py-3"
+                  class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-12 sm:pl-10 text-xl sm:text-lg font-bold border-gray-300 rounded-lg py-4 sm:py-3 bg-white shadow-sm transition-all duration-200 ease-in-out transform focus:scale-[1.01]"
                   placeholder="0,00"
+                  inputmode="numeric"
                   required
                 />
               </div>
