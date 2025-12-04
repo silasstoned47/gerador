@@ -453,7 +453,10 @@ const fetchData = async () => {
     });
 
     processApiData(response);
-    currentStep.value = 2;
+    
+    // API available: Calculate metrics and skip to Step 3 (Analysis)
+    calculateMetrics();
+    currentStep.value = 3;
     scrollToTop();
   } catch (error) {
     console.error('Error fetching data:', error);
