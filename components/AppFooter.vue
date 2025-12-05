@@ -10,7 +10,7 @@
             <span class="text-xl font-bold">Gerador II</span>
           </div>
           <p class="text-gray-600 mb-4">
-            Plataforma completa de ferramentas online. 
+            CNPJ: 58.479.272/0001-04
           </p>
           
         </div>
